@@ -2,6 +2,9 @@
     border: 1px solid #000;
 }
 
-.cLightningAlert > lightning-button > button {
+.cLightningAlert > .custom-card > lightning-button > button {
     border: 1px solid #000;
+}   
+.cLightningAlert > .custom-card  {
+    flex-direction : row !important;
 }   
