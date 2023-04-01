@@ -1,0 +1,26 @@
+<template>
+
+    <div class="custom-card">
+        <!-- create placeholder -->
+        <div class="input-style"> {placeHolder} </div>
+
+        <!-- create buttons -->
+        <template if:true={buttonJson.length}>
+            <div class="button-container">
+                <template for:each={buttonJson} for:item="button" for:index="index">
+                    <template for:each={button.buttons} for:item="btn" for:index="i">
+                        <div key={button.key} style="padding: 0 5px;"> 
+                            <div>
+                                <button  class="custom-btn" data-val={btn} onclick={handleClick}> {btn} </button>
+                            </div>
+                        </div>
+                    </template>
+                </template>
+            </div>
+        </template>
+        <template if:false={buttonJson.length}>
+            <span> Loading Buttons..... </span>
+        </template>
+
+    </div>
+</template>

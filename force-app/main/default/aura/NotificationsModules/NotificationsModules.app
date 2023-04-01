@@ -4,5 +4,8 @@
 
     <p>Lightning Confirm Demo : </p>
     <c:lightningConfirms />
+
+    <p>Calculator Demo : </p>
+    <c:calculator />
     
 </aura:application>	
