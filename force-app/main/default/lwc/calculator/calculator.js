@@ -1,10 +1,12 @@
 import { LightningElement, track } from 'lwc';
+const ACTION_BUTTONS = ['+','-','*','/']
+const EXTRA_BUTTONS = ['CE','C','backspace','=']
 
 export default class Calculator extends LightningElement {
 
     @track stringToCalculate = '' //A string that holds the current value being entered into the calculator
-    @track extraButtons = ['CE','C','backspace','='] // An array of strings that represents the labels of extra buttons in the calculator.
     @track placeHoldertext = 'Enter Calculation' //A string that represents the placeholder text in the calculator input field.
+    @track lastClicked = false
     
     /* An array of objects that represent the rows and buttons in the calculator. 
         Each object has a key property that identifies the row, and a buttons property that contains an array of strings that represent the buttons in that row.
@@ -27,8 +29,9 @@ export default class Calculator extends LightningElement {
         Depending on the value of val, it performs different operations:
     */
     handleClick(event){
+        // get the data value from the click event
         let val = event.target.dataset.val
-
+        if(ACTION_BUTTONS.includes(val) && this.lastClicked) this.stringToCalculate = this.removeLastCharacter(this.stringToCalculate)
         // removes the last character from stringToCalculate variable
         if(val === 'backspace' && !this.placeHoldertext.lenght > 0 ) this.stringToCalculate = this.removeLastCharacter(this.stringToCalculate)
         // it clears the stringToCalculate variable
@@ -36,9 +39,10 @@ export default class Calculator extends LightningElement {
         // it evaluates the current value of stringToCalculate using the eval function and sets stringToCalculate to the result.
         if(val === '=') this.stringToCalculate = eval(this.stringToCalculate).toString()
         // If val is not one of the extra buttons, it appends val to the stringToCalculate variable.
-        if(!this.extraButtons.includes(val)) this.stringToCalculate += val
+        if(!EXTRA_BUTTONS.includes(val)) this.stringToCalculate += val
         // Finally, it updates the placeHoldertext variable based on whether stringToCalculate is empty or not
         this.placeHoldertext = this.stringToCalculate.length > 0 ? '' : 'Enter Calculation'
+        this.lastClicked = ACTION_BUTTONS.includes(val) ? true : false
     }
 
     /*
