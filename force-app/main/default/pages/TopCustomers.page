@@ -1,0 +1,8 @@
+<apex:page controller="TopCustomersController">
+    <apex:pageBlock title="Top Customers">
+        <apex:pageBlockTable value="{!customers}" var="customer">
+            <apex:column headerValue="Name" value="{!customer.Name}"/>
+            <apex:column headerValue="Total Purchases" value="{!customer.Total_Purchases__c}"/>
+        </apex:pageBlockTable>
+    </apex:pageBlock>
+</apex:page>
