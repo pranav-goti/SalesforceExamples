@@ -1,0 +1,4 @@
+<apex:component>
+    <apex:attribute name="greeting" type="String" required="true" description="The greeting to display"/>
+    <h1>{!greeting}</h1>
+</apex:component>
