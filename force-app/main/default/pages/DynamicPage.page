@@ -1,0 +1,12 @@
+<apex:page controller="DynamicPageController">
+    <apex:form>
+        <apex:inputText value="{!searchTerm}" />
+        <apex:commandButton value="Search" action="{!search}" rerender="results" />
+    </apex:form>
+  
+  <apex:outputPanel id="results">
+    <apex:repeat value="{!searchResults}" var="result">
+      <p>{!result.Name}</p>
+    </apex:repeat>
+  </apex:outputPanel>
+</apex:page>
