@@ -1,0 +1,24 @@
+<template>
+
+	<lightning-card title="API With Apex">
+
+		<div style="padding: 0 10px;" onkeyup={handleKeyUp}>
+			<lightning-input name="enter-search" placeholder="Enter Name" label="Hit the 'enter' key to search" type="search" onchange={handleChange}>
+			</lightning-input>
+		</div>
+
+        <template if:true={foundData}>
+            <div style="padding: 0 10px;">
+                <div>Name : {result.name} </div>
+                <div>Gender : {result.gender} </div>
+                <div>Probability : {result.probability} </div>  
+            </div>
+        </template>
+        
+        <template if:true={showSpinner}>
+            <lightning-spinner variant="brand" size="large"> </lightning-spinner>
+        </template>
+
+	</lightning-card>
+
+</template>
