@@ -1,0 +1,62 @@
+<template>
+    <div class="header c-bg">My Code Diary</div>
+    <div class="custom-card">
+        <template if:true={showSpinner}>
+            <lightning-spinner variant="brand" size="large"> </lightning-spinner>
+        </template>
+
+        <div style="display: flex;flex-direction: row;">
+            <div role="create" style="width: 50%;padding:5px">
+                <div>
+                    <div class="sub-header c-bg">Create</div>
+                    <div style="display: flex;width: 100%;gap:5px;margin-bottom: 5px;">
+                        <div style="width: 25%;">
+                            <template if:true={typePicklistValues.data}>
+                                <lightning-combobox name="Tag" label="Tag" value={selectedType} placeholder="Select Tag"
+                                    options={typePicklistValues.data.values} onchange={handleTypeChange}>
+                                </lightning-combobox>
+                            </template>
+                        </div>
+                        <div style="width: 75%;">
+                            <lightning-input type="text" value={selectedSubject} label="Enter Subject" onchange={handleSubjectChange}></lightning-input>
+                        </div>
+                    </div>
+                    <div> <textarea id="somme" rows="5">  </textarea> </div>
+                    <div style="margin-top: 5px;display: flex;gap: 10px;">
+                        <template if:true={isCreate}>
+                            <button class="slds-button slds-button_brand c-bg" onclick={saveSnippet}>Save</button>
+                        </template>
+                        <template if:false={isCreate}>
+                            <button class="slds-button slds-button_brand c-bg" onclick={updateSnippet}>Update</button>
+                            <button class="slds-button slds-button_brand c-bg" onclick={reset}>Reset</button>
+                        </template>
+                        
+                    </div>
+                </div>
+            </div>
+            <div role="find" style="width: 50%;padding:5px">
+                <template if:true={typePicklistValues.data}>
+                    <div style="display: flex;height: 100%;width: 100%;padding-left: 10px;gap: 5px;border-left: 2px groove rgba(173, 173, 173, 0.56);flex-direction: column;">
+                        <div class="sub-header c-bg">Search</div>
+                        <div onkeyup={handleKeyUp}>
+                            <lightning-input name="enter-search" placeholder="Enter Subject"
+                                label="Hit the 'enter' key to search" type="search" onchange={handleChange}>
+                            </lightning-input>
+                        </div>
+                        <div class="solutions-wrapper">
+                            <template if:true={solutions.length}>
+
+                                <template for:each={solutions} for:item="solution">
+                                    <div key={solution.Id} data-item={solution.Id} onclick={handleClick}>
+                                        <div class="p5">{solution.Subject__c}</div>
+                                        <div class={solution.className}>{solution.Type__c}</div>
+                                    </div>
+                                </template>
+                            </template>
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </div>
+</template>
