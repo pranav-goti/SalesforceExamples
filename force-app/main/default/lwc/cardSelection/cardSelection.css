@@ -1,0 +1,70 @@
+:host{
+    --bd-gray : rgb(175 179 181);
+    --bd-blue : rgb(14, 155, 237);
+    --cShadow : 1px 2px 5px 0px #998e8e75;
+    --circle : 50%;
+}
+
+.flex-container,.flex-items {
+    display: flex;
+    align-items: center;
+    justify-content: center; 
+}
+
+.flex-container{
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.flex-items{
+    height: 100px;
+    width: 100px;
+    border: 1px solid var(--bd-gray);
+    border-radius: 5px;
+    flex-direction: column;
+    gap: 10px;
+    cursor: pointer;
+    transition: all 200ms ease-in;
+    position: relative;
+}
+.flex-items:hover{
+    box-shadow: var(--cShadow);
+}
+.flex-items:hover::before {
+    content: "";
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 15px;
+    aspect-ratio: 1;
+    border-radius: var(--circle);
+    border: 1px solid var(--bd-blue);
+}
+.border{
+    border : 1px solid var(--bd-blue);
+    box-shadow: var(--cShadow);
+}
+.selected{
+    border-radius: var(--circle);
+    background : var(--bd-blue);
+}
+.selected::before{
+    content: '';
+    height: 5px;
+    display: block;
+    aspect-ratio: 2;
+    border-bottom: 1px solid white;
+    border-left: 1px solid white;
+    top: 2px;
+    left: 2px;
+    position: absolute;
+    rotate: 320deg;
+    transform: translate(0%, 25%);
+}
+.selectionBox{
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    height: 15px;
+    aspect-ratio: 1;
+}

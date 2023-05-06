@@ -1,0 +1,19 @@
+<template>
+    <lightning-card title="Select Card">
+        <div class="slds-p-horizontal_small">
+            <div class="flex-container">
+                <template for:each={flexItems} for:item="item">
+                    <div class="flex-items" data-source={item.iconName} key={item.iconName} onclick={selectCard}>
+                        <div class="selectionBox" data-destination={item.iconName}> </div>
+                        <div class="icon-box">
+                            <lightning-icon size="large" icon-name={item.iconName} alternative-text={item.alternativeText} title={item.title}></lightning-icon>
+                        </div>
+                        <div class="icon-header">
+                            {item.alternativeText}
+                        </div>
+                    </div>
+                </template>
+            </div>
+        </div>
+    </lightning-card>
+</template>
