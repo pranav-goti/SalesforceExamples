@@ -27,6 +27,10 @@ updateSelection(event){
 ```
 
 
+https://user-images.githubusercontent.com/43970894/236615430-58cdcf44-db75-4670-9cb3-762d90f4f42e.mp4
+
+
+
 # SalesforceLightningAlert
 
 ## How to use
