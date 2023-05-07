@@ -67,8 +67,7 @@ getValidationResult(event){
     this.validationResults = event.detail.validationResult
 }
 ```
-
-
+https://user-images.githubusercontent.com/43970894/236660926-75148ff6-7ae8-456c-8d08-5c7b129c03a2.mp4
 
 # SalesforceLightningAlert
 
