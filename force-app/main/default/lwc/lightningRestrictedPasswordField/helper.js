@@ -1,3 +1,5 @@
+// this file you need to create in parent component and from that you will need to pass this in child component.
+
 const validationResult = {
     isUpper : {
         className : 'align-items',
